@@ -1,5 +1,5 @@
 import { MdOutlineDone } from "react-icons/md";
-import { MdOutlineDoneAll } from "react-icons/md";
+// import { MdOutlineDoneAll } from "react-icons/md";
 const Message = () => {
   return (
     <div className="chat chat-start">

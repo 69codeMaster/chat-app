@@ -1,7 +1,7 @@
 import { Request } from "express";
 import mongoose from "mongoose";
 
-const genders = ["male", "female"] as const;
+const genders = ["male", "female", ""] as const;
 
 export interface SignupRequest extends Request {
   body: {

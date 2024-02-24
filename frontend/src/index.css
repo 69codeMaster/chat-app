@@ -4,6 +4,6 @@
 
 body {
   background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../public/bg.png") no-repeat fixed center;
+    url("./bg.png") no-repeat fixed center;
   background-size: cover;
 }
