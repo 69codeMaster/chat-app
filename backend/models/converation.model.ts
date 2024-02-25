@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { IChat } from "../../shared/modelTypes";
 
 const conversationSchema = new mongoose.Schema(
   {
@@ -19,14 +20,6 @@ const conversationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-type IConversation = {
-  participents: mongoose.Schema.Types.ObjectId[];
-  messages: mongoose.Types.ObjectId[];
-};
-
-const Conversation = mongoose.model<IConversation>(
-  "Converation",
-  conversationSchema
-);
+const Conversation = mongoose.model<IChat>("Converation", conversationSchema);
 
 export default Conversation;

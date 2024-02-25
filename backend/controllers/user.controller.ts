@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user.model.js";
-import { GetUsersRequest } from "../../shared/requestsType.js";
+import { GetUsersRequest } from "@shared/requestsType.js";
 
 export const getUsersForSideBar = async (
   expressReq: Request,
@@ -8,9 +8,9 @@ export const getUsersForSideBar = async (
 ) => {
   try {
     const req = expressReq as GetUsersRequest;
-    const loggenInUser = req.user.id;
+    const loggedInUser = req.user.id;
 
-    const allUsers = await User.find({ _id: { $ne: loggenInUser } });
+    const allUsers = await User.find({ _id: { $ne: loggedInUser } });
 
     res.status(201).json(allUsers);
   } catch (e) {

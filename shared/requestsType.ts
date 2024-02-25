@@ -1,17 +1,8 @@
 import { Request } from "express";
-import mongoose from "mongoose";
+import { IUser, IChat, IMessage } from "./modelTypes";
 
-const genders = ["male", "female", ""] as const;
-export type User = {
-  fullName: string;
-  username: string;
-  password: string;
-  passwordConfirmation: string;
-  gender: (typeof genders)[number];
-  profilePic?: string;
-};
 export interface SignupRequest extends Request {
-  body: Omit<User, "profilePic">;
+  body: Omit<IUser, "profilePic">;
 }
 
 export interface LoginRequest extends Request {
@@ -19,7 +10,7 @@ export interface LoginRequest extends Request {
 }
 
 export interface LogoutRequest extends Request {
-  body: { username: string };
+  body: Pick<IUser, "username">;
 }
 
 export interface SendMessageRequest extends Request {
@@ -31,7 +22,7 @@ export interface SendMessageRequest extends Request {
     message: string;
   };
 
-  user: { id: mongoose.Schema.Types.ObjectId };
+  user: { id: IMessage["_id"] };
 }
 
 export interface SendMessageRequest extends Request {
@@ -43,7 +34,7 @@ export interface SendMessageRequest extends Request {
     message: string;
   };
 
-  user: { id: mongoose.Schema.Types.ObjectId };
+  user: { id: IUser["_id"]  };
 }
 
 export interface GetMessagesRequest extends Request {
@@ -51,10 +42,10 @@ export interface GetMessagesRequest extends Request {
     id: string;
   };
 
-  user: { id: mongoose.Schema.Types.ObjectId };
+  user: { id: IUser["_id"] };
 }
 export interface GetUsersRequest extends Request {
-  user: { id: mongoose.Schema.Types.ObjectId };
+  user: { id: IUser["_id"] };
 }
 
 export type sendMessageWithParams =

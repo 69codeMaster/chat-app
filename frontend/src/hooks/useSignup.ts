@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { User } from "./../../../shared/requestsType";
+import { IUser } from "@shared/modelTypes";
 import { useCurrentUser } from "../context/currentUser";
 import toast from "react-hot-toast";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const { setCurrentUser } = useCurrentUser();
-  const signup = async (signupData: User) => {
+  const signup = async (signupData: IUser) => {
     const success = validateSignupData(signupData);
     let ok = false;
     if (!success) return false;
@@ -42,7 +42,7 @@ const useSignup = () => {
 };
 export default useSignup;
 
-function validateSignupData(signupData: User) {
+function validateSignupData(signupData: IUser) {
   let isValid = Object.values(signupData).every((value) => value.trim() !== "");
 
   if (!isValid) {

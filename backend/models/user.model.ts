@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { IUser } from "../../shared/modelTypes";
 
 const userSchema: Schema = new mongoose.Schema(
   {
@@ -11,15 +12,9 @@ const userSchema: Schema = new mongoose.Schema(
   { timestamps: true }
 );
 
-type IUser = {
-  _id: mongoose.Types.ObjectId;
-  fullName: string;
-  username: string;
-  password: string;
-  gender: string;
-  profilePic: string;
-};
-
-const User = mongoose.model<IUser>("User", userSchema);
+const User = mongoose.model<Omit<IUser, "passwordConfirmation">>(
+  "User",
+  userSchema
+);
 
 export default User;

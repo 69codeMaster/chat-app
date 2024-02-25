@@ -1,4 +1,9 @@
-const ChatItem = () => {
+import { IUser } from "@shared/modelTypes";
+
+type ChatItemProps = {
+  userChat: IUser;
+};
+const ChatItem = ({ userChat }: ChatItemProps) => {
   return (
     <>
       <div className="flex gap-2 items-center hover:bg-sky-500 cursor-pointer p-2 py-1">
@@ -11,7 +16,10 @@ const ChatItem = () => {
           </div>
         </div>
         <div className="flex grow gap-3 justify-between items-center">
-          <p className="font-bold text-lg text-gray-200"> name </p>
+          <p className="font-bold text-lg text-gray-200">
+            {" "}
+            {userChat.username}
+          </p>
           <span className="text-xl">😈</span>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 import { contextType, props, userContext } from "./currentUserType";
 
 const defualt: userContext = {
+  _id: "",
   fullName: "",
   gender: "",
   profilePic: "",

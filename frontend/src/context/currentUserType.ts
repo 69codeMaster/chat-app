@@ -1,7 +1,7 @@
-import { User } from "./../../../shared/requestsType";
 import { Dispatch, ReactNode, SetStateAction } from "react";
+import { IUser } from "@shared/modelTypes";
 
-export type userContext = Omit<User, "password" | "passwordConfirmation">;
+export type userContext = Omit<IUser, "password" | "passwordConfirmation">;
 
 export type contextType = {
   currentUser: userContext | null;

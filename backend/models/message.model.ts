@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import User from "./user.model.js";
+import { IMessage } from "../../shared/modelTypes.js";
 
 const messageSchema = new mongoose.Schema(
   {
@@ -17,12 +18,6 @@ const messageSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-
-type IMessage = {
-  senderId: mongoose.Schema.Types.ObjectId;
-  receiverId: mongoose.Schema.Types.ObjectId;
-  message: string;
-};
 
 const Message = mongoose.model<IMessage>("Message", messageSchema);
 
