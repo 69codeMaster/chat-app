@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { SignupRequest } from "./../../../shared/requestsType";
+import { User } from "./../../../shared/requestsType";
+import { useCurrentUser } from "../context/currentUser";
 import toast from "react-hot-toast";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
-
-  const signup = async (signupData: SignupRequest["body"]) => {
+  const { setCurrentUser } = useCurrentUser();
+  const signup = async (signupData: User) => {
     const success = validateSignupData(signupData);
     let ok = false;
     if (!success) return false;
@@ -21,9 +22,12 @@ const useSignup = () => {
 
       const data = await res.json();
       ok = res.ok;
-      res.ok
-        ? toast.success(`User ${signupData.username} was created`)
-        : toast.error(data.message);
+      if (res.ok) {
+        localStorage.setItem("current-user", JSON.stringify(data));
+        toast.success(`User ${signupData.username} was created`);
+      } else {
+        toast.error(data.message);
+      }
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -36,7 +40,7 @@ const useSignup = () => {
   return { loading, signup };
 };
 export default useSignup;
-function validateSignupData(signupData: SignupRequest["body"]) {
+function validateSignupData(signupData: User) {
   let isValid = Object.values(signupData).every((value) => value.trim() !== "");
 
   if (!isValid) {

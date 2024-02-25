@@ -2,9 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import useSignup from "../../hooks/useSignup";
-import { SignupRequest } from "../../../../shared/requestsType";
-
-type inputFields = SignupRequest["body"];
+import { User as inputFields } from "../../../../shared/requestsType";
 
 const Signup = () => {
   const emptyForm: inputFields = {
@@ -20,7 +18,7 @@ const Signup = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const ok = await signup(formData!);
+    const ok = await signup(formData);
     if (ok) setFormData(emptyForm);
   };
 

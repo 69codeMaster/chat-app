@@ -2,15 +2,16 @@ import { Request } from "express";
 import mongoose from "mongoose";
 
 const genders = ["male", "female", ""] as const;
-
+export type User = {
+  fullName: string;
+  username: string;
+  password: string;
+  passwordConfirmation: string;
+  gender: (typeof genders)[number];
+  profilePic?: string;
+};
 export interface SignupRequest extends Request {
-  body: {
-    fullName: string;
-    username: string;
-    password: string;
-    passwordConfirmation: string;
-    gender: (typeof genders)[number];
-  };
+  body: Omit<User, "profilePic">;
 }
 
 export interface LoginRequest extends Request {

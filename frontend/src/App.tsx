@@ -1,12 +1,16 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 
 import Login from "./pages/login/Login.tsx";
 import Signup from "./pages/singup/Signup.tsx";
 import Home from "./pages/home/Home.tsx";
 import "./App.css";
+import { useCurrentUser } from "./context/currentUser.tsx";
 
 function App() {
+  const { currentUser } = useCurrentUser();
+  console.log(currentUser);
+
   return (
     <>
       <div>
@@ -14,9 +18,18 @@ function App() {
       </div>
       <div className="p-4 h-screen flex items-center justify-center">
         <Routes>
-          <Route path={"/login"} element={<Login />} />
-          <Route path={"/"} element={<Home />} />
-          <Route path={"/signup"} element={<Signup />} />
+          <Route
+            path={"/"}
+            element={currentUser.username ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path={"/login"}
+            element={currentUser.username ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path={"/signup"}
+            element={currentUser.username ? <Navigate to="/" /> : <Signup />}
+          />
         </Routes>
       </div>
     </>

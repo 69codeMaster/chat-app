@@ -9,11 +9,11 @@ import { compare, hash } from "../utils/passwordActions.js";
 import generateTokenAndSetCookie from "../utils/generateJwtSetCookie.js";
 
 export const signup = async (req: SignupRequest, res: Response) => {
+  console.log("sign up in server");
+
   try {
     const { username, fullName, password, passwordConfirmation, gender } =
       req.body;
-
-    console.log(req.body);
 
     const user_exists = await User.exists({ username });
 
@@ -44,8 +44,16 @@ export const signup = async (req: SignupRequest, res: Response) => {
     if (newUser) {
       generateTokenAndSetCookie(newUser._id, res);
       await newUser.save();
-      res.status(201).json({ message: `user ${username} was created` });
-    } else res.status(400).json({ message: "invalid user data" });
+
+      res.status(201).json({
+        _id: newUser._id,
+        fullName: newUser.fullName,
+        username: newUser.username,
+        profilePic: newUser.profilePic,
+      });
+    } else {
+      res.status(400).json({ message: "invalid user data" });
+    }
   } catch (e: any) {
     console.log("error in singup controller ", e.message);
     res.status(501).json({ message: "internal server error" });
