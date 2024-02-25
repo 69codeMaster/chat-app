@@ -2,7 +2,7 @@ import { BsSend } from "react-icons/bs";
 
 const MessageInput = () => {
   return (
-    <form className="px-4 my-3">
+    <form className="px-4 my-3" onSubmit={(e) => e.preventDefault()}>
       <div className="w-full relative">
         <input
           type="text"

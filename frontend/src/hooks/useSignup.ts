@@ -24,6 +24,7 @@ const useSignup = () => {
       ok = res.ok;
       if (res.ok) {
         localStorage.setItem("current-user", JSON.stringify(data));
+        setCurrentUser(data);
         toast.success(`User ${signupData.username} was created`);
       } else {
         toast.error(data.message);
@@ -40,6 +41,7 @@ const useSignup = () => {
   return { loading, signup };
 };
 export default useSignup;
+
 function validateSignupData(signupData: User) {
   let isValid = Object.values(signupData).every((value) => value.trim() !== "");
 

@@ -19,17 +19,18 @@ export function useCurrentUser() {
 export default function CurrentUserProvider({ children }: props) {
   const localStorageUser = localStorage.getItem("current-user");
 
-  const user: userContext = localStorageUser
+  const user: contextType["currentUser"] = localStorageUser
     ? JSON.parse(localStorageUser)
-    : defualt;
+    : null;
 
-  const [currentUser, setCurrentUser] = useState<userContext>(user);
+  const [currentUser, setCurrentUser] =
+    useState<contextType["currentUser"]>(user);
 
   const value: contextType = {
     currentUser,
     setCurrentUser,
   };
-  
+
   return (
     <CurrentUserCtx.Provider value={value}>{children}</CurrentUserCtx.Provider>
   );

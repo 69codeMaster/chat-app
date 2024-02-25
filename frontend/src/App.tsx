@@ -20,15 +20,15 @@ function App() {
         <Routes>
           <Route
             path={"/"}
-            element={currentUser.username ? <Home /> : <Navigate to="/login" />}
+            element={currentUser ? <Home /> : <Navigate to="/login" />}
           />
           <Route
             path={"/login"}
-            element={currentUser.username ? <Navigate to="/" /> : <Login />}
+            element={currentUser ? <Navigate to="/" /> : <Login />}
           />
           <Route
             path={"/signup"}
-            element={currentUser.username ? <Navigate to="/" /> : <Signup />}
+            element={currentUser ? <Navigate to="/" /> : <Signup />}
           />
         </Routes>
       </div>

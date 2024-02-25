@@ -103,9 +103,9 @@ const Signup = () => {
             className="mt-2 w-full btn btn-outline btn-info block text-xl"
             disabled={loading}>
             {loading ? (
-              <span className="loading loading-spinner"></span>
+              <span className="loading loading-spinner "></span>
             ) : (
-              "Sign Up"
+              "Login"
             )}
           </button>
         </form>

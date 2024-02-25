@@ -71,10 +71,15 @@ export const login = async (req: LoginRequest, res: Response) => {
     if (!user || !isPasswordCorrect)
       return res
         .status(400)
-        .json({ error: "username or password are incorrect" });
+        .json({ message: "username or password are incorrect" });
 
     generateTokenAndSetCookie(user?._id, res);
-    res.status(201).json({ message: "logged in successfully" });
+    res.status(201).json({
+      _id: user._id,
+      fullName: user.fullName,
+      username: user.username,
+      profilePic: user.profilePic,
+    });
   } catch (e: any) {
     res.status(500).json({ message: e.message });
   }
