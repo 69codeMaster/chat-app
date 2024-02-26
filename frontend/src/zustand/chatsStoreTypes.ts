@@ -1,5 +1,6 @@
-import { IChat } from "@shared/modelTypes";
+import { IUser } from "@shared/modelTypes";
 
 export type storeType = {
-  selectedChat: IChat;
+  selectedChat: Pick<IUser, "_id" | "fullName" | "username">;
+  setSelectedChat: (chat: IUser) => void;
 };

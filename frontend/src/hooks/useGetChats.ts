@@ -1,8 +1,6 @@
-import { useCurrentUser } from "../context/currentUser";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { IUser } from "@shared/modelTypes";
-import React from "react";
 
 const useGetChats = () => {
   const [loading, setLoading] = useState<boolean>();
