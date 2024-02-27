@@ -1,16 +1,23 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 import useSignup from "../../hooks/useSignup";
-import { User as inputFields } from "../../../../shared/requestsType";
+import { IUser as inputFields } from "@shared/modelTypes";
+
+import FormHeader from "@src/components/UI/FormHeader";
+import FormButton from "@src/components/UI/FormButton";
+import FormEntry from "@src/components/UI/FormEntry";
+import FormLink from "@src/components/UI/FormLink";
+import FormCheckBox from "@src/components/UI/FormCheckBox";
 
 const Signup = () => {
   const emptyForm: inputFields = {
+    _id: "",
     fullName: "",
     gender: "",
     password: "",
     username: "",
     passwordConfirmation: "",
+    profilePic: "",
   };
   const [formData, setFormData] = useState<inputFields>(emptyForm);
 
@@ -27,94 +34,65 @@ const Signup = () => {
   };
 
   return (
-    <div className="form-control items-center justify-center min-w-96 mx-auto">
-      <div className="p-6 h-full w-full bg-gray-500 text-white rounded-lg bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50 text-2xl">
-        <h1 className="text-gray-300 text-3xl text-center font-semibold ">
-          Sign Up
-          <span className="text-info text-center"> ChatApp </span>
-        </h1>
-        <form className="pb-4" onSubmit={(event) => handleSubmit(event)}>
-          <div>
-            <h1 className="label label-text text-sm"> Full name </h1>
-            <input
-              onChange={({ target }) => handleChange("fullName", target.value)}
-              value={formData?.fullName}
-              type="text"
-              placeholder="Enter full name"
-              className="w-full input input-border h-10"></input>
-          </div>
+    <div className="form-control py-2 min-w-96 mx-auto">
+      <div className="px-6 py-2 h-full w-full bg-gray-500 text-white rounded-lg bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50 text-2xl">
+        <FormHeader title="Signup" />
+        <form className="pb-2" onSubmit={(event) => handleSubmit(event)}>
+          <FormEntry
+            title="Full name"
+            name="fullName"
+            onChange={handleChange}
+            value={formData?.fullName}
+            placeholder="Enter full name"
+          />
 
-          <div>
-            <h1 className="label label-text text-sm"> Username </h1>
-            <input
-              onChange={({ target }) => handleChange("username", target.value)}
-              value={formData?.username}
-              type="text"
-              placeholder="Enter username"
-              className="w-full input input-border h-10"></input>
-          </div>
+          <FormEntry
+            title="Username"
+            name="username"
+            onChange={handleChange}
+            value={formData?.username}
+            placeholder="Enter username"
+          />
 
-          <div>
-            <h1 className="label label-text text-sm"> Password </h1>
-            <input
-              name="password"
-              onChange={({ target }) => handleChange("password", target.value)}
-              value={formData?.password}
-              type="text"
-              placeholder="Enter password"
-              className="w-full input input-border h-10"></input>
-          </div>
+          <FormEntry
+            title="password"
+            name="password"
+            onChange={handleChange}
+            value={formData?.password}
+            placeholder="enter password"
+          />
 
-          <div>
-            <h1 className="label label-text text-sm"> Confirm password </h1>
-            <input
-              onChange={({ target }) =>
-                handleChange("passwordConfirmation", target.value)
-              }
-              value={formData?.passwordConfirmation}
-              type="text"
-              placeholder="Renter password"
-              className="w-full input input-border h-10"></input>
-          </div>
+          <FormEntry
+            title="password confirmation"
+            name="passwordConfirmation"
+            onChange={handleChange}
+            value={formData?.passwordConfirmation}
+            placeholder="Renter password"
+          />
 
           <div className="flex checkedbox-group">
-            <label className="cursor-pointer label">
-              <span className="mx-2">male</span>
-              <input
-                type="checkbox"
-                className="checkbox checkbox-info"
-                checked={formData?.gender === "male"}
-                onChange={() => handleChange("gender", "male")}
-              />
-            </label>
+            <FormCheckBox
+              name="male"
+              color="info"
+              onChange={() => handleChange("gender", "male")}
+              checked={formData?.gender === "male"}
+            />
 
-            <label className="cursor-pointer label">
-              <span className="mx-2">female</span>
-              <input
-                type="checkbox"
-                checked={formData?.gender === "female"}
-                onChange={() => handleChange("gender", "female")}
-                className="checkbox checkbox-secondary"
-              />
-            </label>
+            <FormCheckBox
+              name="female"
+              color="secondary"
+              onChange={() => handleChange("gender", "female")}
+              checked={formData?.gender === "female"}
+            />
           </div>
 
-          <button
-            className="mt-2 w-full btn btn-outline btn-info block text-xl"
-            disabled={loading}>
-            {loading ? (
-              <span className="loading loading-spinner "></span>
-            ) : (
-              "Login"
-            )}
-          </button>
+          {loading ? (
+            <div className="mt-2 mx-auto btn loading loading-spinner block text-xl" />
+          ) : (
+            <FormButton>Signup</FormButton>
+          )}
+          <FormLink to="/login" text="Already have an account?" />
         </form>
-
-        <Link
-          to="/login"
-          className="text-sm text-gray-300text-start hover:underline hover:text-info inline-block">
-          Already have an account?
-        </Link>
       </div>
     </div>
   );

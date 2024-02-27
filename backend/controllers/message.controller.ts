@@ -1,8 +1,5 @@
 import { Response, Request } from "express";
-import {
-  GetMessagesRequest,
-  SendMessageRequest,
-} from "../../shared/requestsType";
+import { GetMessagesRequest, SendMessageRequest } from "@shared/requestsType";
 import Message from "../models/message.model.js";
 import Conversation from "../models/converation.model.js";
 
