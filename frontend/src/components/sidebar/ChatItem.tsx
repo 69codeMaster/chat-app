@@ -10,8 +10,10 @@ const ChatItem = ({ userChat }: ChatItemProps) => {
   return (
     <div onClick={() => setSelectedChat(userChat)}>
       <div
-        className={`flex gap-2 items-center hover:bg-sky-500 cursor-pointer p-2 py-1 ${
-          selectedChat._id === userChat._id ? "bg-sky-500" : ""
+        className={`flex gap-2 items-center cursor-pointer p-2 py-1 ${
+          selectedChat._id === userChat._id
+            ? "bg-sky-500"
+            : " hover:bg-gray-700"
         } `}>
         <div className="avatar online">
           <div className="w-10 rounded-full">

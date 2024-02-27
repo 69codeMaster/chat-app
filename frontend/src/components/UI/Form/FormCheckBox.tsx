@@ -13,9 +13,13 @@ const FormCheckBox = ({ name, checked, onChange, color }: props) => {
         type="checkbox"
         checked={checked}
         onChange={onChange}
-        className={`checkbox checkbox-${color}`}
+        className={`checkbox checkbox-${color} `}
       />
     </label>
+
+    /* needed for dynamic color to work no ideas why tho 
+      {false && <input className={"checkbox checkbox-info"} />}
+      {false && <input className={"checkbox checkbox-secondary"} />} */
   );
 };
 

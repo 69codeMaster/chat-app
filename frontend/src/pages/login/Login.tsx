@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { LoginCredentials } from "./LoginTypes";
-import useLogin from "../../hooks/useLogin";
-import FormButton from "@src/components/UI/FormButton";
-import FormEntry from "@src/components/UI/FormEntry";
-import FormLink from "@src/components/UI/FormLink";
-import FormHeader from "@src/components/UI/FormHeader";
+
+import useLogin from "@hooks/useLogin";
+
+import Card from "@src/components/UI/Card";
+import FormButton from "@src/components/UI/Form/FormButton";
+import FormEntry from "@src/components/UI/Form/FormEntry";
+import FormLink from "@src/components/UI/Form/FormLink";
+import FormHeader from "@src/components/UI/Form/FormHeader";
 
 const Login = () => {
   const [loginCredential, setLoginCredential] = useState<LoginCredentials>({
@@ -25,36 +27,34 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
-      <div className="p-6 h-full w-full bg-gray-500 rounded-lg bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-50 text-2xl">
-        <FormHeader title="Login" />
-        <form className="form-control gap-2" onSubmit={(e) => submitLogin(e)}>
-          <FormEntry
-            title="Username"
-            name="username"
-            onChange={handleChange}
-            value={loginCredential?.username}
-            placeholder="Enter username"
-          />
+    <Card>
+      <FormHeader title="Login" />
+      <form className="form-control gap-2" onSubmit={(e) => submitLogin(e)}>
+        <FormEntry
+          title="Username"
+          name="username"
+          onChange={handleChange}
+          value={loginCredential?.username}
+          placeholder="Enter username"
+        />
 
-          <FormEntry
-            title="password"
-            name="password"
-            onChange={handleChange}
-            value={loginCredential?.password}
-            placeholder="enter password"
-          />
+        <FormEntry
+          title="password"
+          name="password"
+          onChange={handleChange}
+          value={loginCredential?.password}
+          placeholder="enter password"
+        />
 
-          {loading ? (
-            <div className="mt-2 mx-auto btn loading loading-spinner block text-xl" />
-          ) : (
-            <FormButton>Login</FormButton>
-          )}
+        {loading ? (
+          <div className="mt-2 mx-auto btn loading loading-spinner block text-xl" />
+        ) : (
+          <FormButton>Login</FormButton>
+        )}
 
-          <FormLink to="/signup" text="don't have an account yet?" />
-        </form>
-      </div>
-    </div>
+        <FormLink to="/signup" text="don't have an account yet?" />
+      </form>
+    </Card>
   );
 };
 

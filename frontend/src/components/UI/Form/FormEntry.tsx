@@ -15,7 +15,7 @@ const FormEntry = ({ name, value, placeholder, onChange, title }: props) => {
         onChange={({ target }) => onChange(name, target.value)}
         value={value}
         placeholder={placeholder}
-        className="w-full input input-border h-10"
+        className="w-full input input-border h-10 text-gray-300"
       />
     </div>
   );

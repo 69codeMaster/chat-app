@@ -8,7 +8,11 @@
     "baseUrl": "./",
     "paths": {
       "@shared/*": ["../shared/*"],
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
+      "@hooks/*": ["./src/hooks/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@components/*": ["./src/components/*"],
+      "@context/*": ["./src/context/*"]
     },
     /* Bundler mode */
     "moduleResolution": "bundler",
