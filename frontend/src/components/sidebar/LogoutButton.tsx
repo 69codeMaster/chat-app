@@ -7,11 +7,11 @@ const LogoutButton = () => {
     await logout();
   };
   return (
-    <div className="mt-auto" onClick={handleLogout}>
+    <div className="mt-auto pt-2" onClick={handleLogout}>
       {loading ? (
         <button className="loading loading-spinner" />
       ) : (
-        <BiLogOut className="w-6 h-6 text-white cursor-pointer" />
+        <BiLogOut className="w-8 h-8 text-white cursor-pointer" />
       )}
     </div>
   );

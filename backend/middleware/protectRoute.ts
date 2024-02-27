@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import { SendMessageRequest } from "../../shared/requestsType.js";
+import { SendMessageRequest } from "../requestsType.ts";
 import { Request, Response, NextFunction } from "express";
-import User from "../models/user.model.js";
+import User from "../models/user.model.ts";
 
 export default async (
   expressReq: Request,

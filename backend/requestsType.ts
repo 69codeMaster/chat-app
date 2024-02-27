@@ -1,5 +1,5 @@
 import { Request } from "express";
-import { IUser, IChat, IMessage } from "./modelTypes";
+import { IUser, IMessage } from "@shared/modelTypes";
 
 export interface SignupRequest extends Request {
   body: Omit<IUser, "profilePic">;
@@ -34,7 +34,7 @@ export interface SendMessageRequest extends Request {
     message: string;
   };
 
-  user: { id: IUser["_id"]  };
+  user: { id: IUser["_id"] };
 }
 
 export interface GetMessagesRequest extends Request {

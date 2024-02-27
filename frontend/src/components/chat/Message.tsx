@@ -1,19 +1,31 @@
 import { MdOutlineDone } from "react-icons/md";
+import { IMessage } from "@shared/modelTypes";
+import { useCurrentUser } from "@src/context/currentUser";
+import useSelectedChat from "@src/zustand/useSelectedChat";
 // import { MdOutlineDoneAll } from "react-icons/md";
-const Message = () => {
+
+type props = Omit<IMessage, "_id">;
+
+const Message = ({ message, receiverId, senderId }: props) => {
+  const { currentUser } = useCurrentUser();
+  const { selectedChat } = useSelectedChat();
+
+  const messageSide = senderId! == currentUser?._id ? "chat-start" : "chat-end";
+  const profilePic =
+    senderId! == currentUser?._id
+      ? currentUser.profilePic
+      : selectedChat.profilePic;
+
   return (
-    <div className="chat chat-start">
+    <div className={`chat ${messageSide}`}>
       <div className="chat-image avatar">
         <div className="w-10 rounded-full">
-          <img
-            alt="Tailwind CSS chat bubble component"
-            src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-          />
+          <img alt="Tailwind CSS chat bubble component" src={profilePic} />
         </div>
       </div>
 
       <div className="chat-bubble bg-blue-500 text-lg pb-2 text-white">
-        You were the Chosen One!
+        {message}
       </div>
       <div className="chat-footer opacity-50">
         <MdOutlineDone className="inline mr-1" />

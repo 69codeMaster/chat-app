@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
-import { GetMessagesRequest, SendMessageRequest } from "@shared/requestsType";
-import Message from "../models/message.model.js";
-import Conversation from "../models/converation.model.js";
+import { GetMessagesRequest, SendMessageRequest } from "requestsType";
+import Message from "../models/message.model.ts";
+import Conversation from "../models/converation.model.ts";
 
 export const sendMessage = async (expressReq: Request, res: Response) => {
   try {

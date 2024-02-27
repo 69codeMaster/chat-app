@@ -1,11 +1,8 @@
 import express from "express";
 
-import { sendMessage, getMessage } from "../controllers/message.controller.js";
-import {
-  sendMessageWithParams,
-  getMessagesWithParams,
-} from "../../shared/requestsType.js";
-import protectRoute from "../middleware/protectRoute.js";
+import { sendMessage, getMessage } from "../controllers/message.controller.ts";
+import { sendMessageWithParams, getMessagesWithParams } from "requestsType";
+import protectRoute from "../middleware/protectRoute";
 
 const Router = express.Router();
 

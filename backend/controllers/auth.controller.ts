@@ -1,12 +1,8 @@
-import {
-  SignupRequest,
-  LoginRequest,
-  LogoutRequest,
-} from "../../shared/requestsType";
+import { SignupRequest, LoginRequest, LogoutRequest } from "../requestsType";
 import { Response } from "express";
 import User from "../models/user.model.js";
-import { compare, hash } from "../utils/passwordActions.js";
-import generateTokenAndSetCookie from "../utils/generateJwtSetCookie.js";
+import { compare, hash } from "../utils/passwordActions.ts";
+import generateTokenAndSetCookie from "../utils/generateJwtSetCookie.ts";
 
 export const signup = async (req: SignupRequest, res: Response) => {
   console.log("sign up in server");

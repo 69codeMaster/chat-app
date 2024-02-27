@@ -3,10 +3,10 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParse from "cookie-parser";
 
-import authRoutes from "./routes/auth.routes.js";
-import messageRoutes from "./routes/message.routes.js";
-import userRoutes from "./routes/user.routes.js";
-import connectToMongoDB from "./db/connectToDB.js";
+import authRoutes from "./routes/auth.routes.ts";
+import messageRoutes from "./routes/message.routes.ts";
+import userRoutes from "./routes/user.routes.ts";
+import connectToMongoDB from "./db/connectToDB.ts";
 
 dotenv.config();
 

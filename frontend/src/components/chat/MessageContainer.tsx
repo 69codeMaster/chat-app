@@ -1,24 +1,15 @@
 import Chat from "./Chat";
-import { TiMessages } from "react-icons/ti";
-import { useCurrentUser } from "../../context/currentUser";
+import ChatSkeleton from "../UI/Skeletons/ChatSkeleton";
+import useSelectedChat from "@src/zustand/useSelectedChat";
 
 const MessageContainer = () => {
-  const chatSelected = true;
+  const { selectedChat } = useSelectedChat();
 
   return (
     <div className="md:min-w-[450px] form-control">
-      {!chatSelected ? <Default /> : <Chat />}
+      {!selectedChat._id ? <ChatSkeleton /> : <Chat />}
     </div>
   );
 };
 
-const Default = () => {
-  return (
-    <div className="w-full h-full text-center text-white form-control items-center justify-center gap-1">
-      <h1 className="text-lg">Welcome 👋 currentUser ❄️</h1>
-      <p className="text-xl">Select a chat to start messaging </p>
-      <TiMessages size={60} />
-    </div>
-  );
-};
 export default MessageContainer;

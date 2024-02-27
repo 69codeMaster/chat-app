@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import User from "../models/user.model.js";
-import { GetUsersRequest } from "@shared/requestsType.js";
+import User from "../models/user.model.ts";
+import { GetUsersRequest } from "requestsType";
 
 export const getUsersForSideBar = async (
   expressReq: Request,

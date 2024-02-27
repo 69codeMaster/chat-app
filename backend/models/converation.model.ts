@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { IChat } from "../../shared/modelTypes";
+import { IChat } from "@shared/modelTypes";
 
 const conversationSchema = new mongoose.Schema(
   {

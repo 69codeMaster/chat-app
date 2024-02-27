@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import User from "./user.model.js";
-import { IMessage } from "../../shared/modelTypes.js";
+import { IMessage } from "@shared/modelTypes";
 
 const messageSchema = new mongoose.Schema(
   {

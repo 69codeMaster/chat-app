@@ -1,21 +1,24 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
-import { IUser } from "@shared/modelTypes";
 
-const useGetChats = () => {
+import { IMessage } from "@shared/modelTypes";
+import useSelectedChat from "@src/zustand/useSelectedChat";
+
+const useGetMessages = () => {
   const [loading, setLoading] = useState<boolean>();
-  const [sideBarUsers, setSideBarUsers] = useState<IUser[]>([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
+  const { selectedChat: reciever } = useSelectedChat();
 
   useEffect(() => {
-    const getChats = async () => {
+    const getMessages = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`api/users/`);
+        const res = await fetch(`api/messages/${reciever?._id}`);
         const data = await res.json();
         if (data.error) {
           // throw new Error(data.error);
         }
-        setSideBarUsers(data);
+        setMessages(data);
       } catch (error: any) {
         toast.error(error.message);
       } finally {
@@ -23,10 +26,10 @@ const useGetChats = () => {
       }
     };
 
-    getChats();
-  }, []);
+    if (reciever._id) getMessages();
+  }, [reciever]);
 
-  return { sideBarUsers, loading };
+  return { messages, loading };
 };
 
-export default useGetChats;
+export default useGetMessages;

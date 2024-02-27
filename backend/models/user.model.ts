@@ -1,5 +1,5 @@
 import mongoose, { Schema } from "mongoose";
-import { IUser } from "../../shared/modelTypes";
+import { IUser } from "@shared/modelTypes";
 
 const userSchema: Schema = new mongoose.Schema(
   {
