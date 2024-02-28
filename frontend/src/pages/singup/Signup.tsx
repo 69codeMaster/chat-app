@@ -55,6 +55,7 @@ const Signup = () => {
         <FormEntry
           title="password"
           name="password"
+          type="password"
           onChange={handleChange}
           value={formData?.password}
           placeholder="enter password"
@@ -63,6 +64,7 @@ const Signup = () => {
         <FormEntry
           title="password confirmation"
           name="passwordConfirmation"
+          type="password"
           onChange={handleChange}
           value={formData?.passwordConfirmation}
           placeholder="Renter password"

@@ -3,11 +3,11 @@ import { LoginCredentials } from "./LoginTypes";
 
 import useLogin from "@hooks/useLogin";
 
-import Card from "@src/components/UI/Card";
-import FormButton from "@src/components/UI/Form/FormButton";
-import FormEntry from "@src/components/UI/Form/FormEntry";
-import FormLink from "@src/components/UI/Form/FormLink";
-import FormHeader from "@src/components/UI/Form/FormHeader";
+import Card from "@components/UI/Card";
+import FormButton from "@components/UI/Form/FormButton";
+import FormEntry from "@components/UI/Form/FormEntry";
+import FormLink from "@components/UI/Form/FormLink";
+import FormHeader from "@components/UI/Form/FormHeader";
 
 const Login = () => {
   const [loginCredential, setLoginCredential] = useState<LoginCredentials>({
@@ -41,6 +41,7 @@ const Login = () => {
         <FormEntry
           title="password"
           name="password"
+          type="password"
           onChange={handleChange}
           value={loginCredential?.password}
           placeholder="enter password"
