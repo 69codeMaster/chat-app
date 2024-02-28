@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { SendMessageRequest } from "../requestsType.ts";
+import { SendMessageRequest } from "@shared/requestsType.ts";
 import { Request, Response, NextFunction } from "express";
 import User from "../models/user.model.ts";
 

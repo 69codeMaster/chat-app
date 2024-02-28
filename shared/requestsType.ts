@@ -1,8 +1,8 @@
 import { Request } from "express";
-import { IUser, IMessage } from "@shared/modelTypes";
+import { IUser, IMessage } from "./modelTypes";
 
 export interface SignupRequest extends Request {
-  body: Omit<IUser, "profilePic">;
+  body: Omit<IUser, "profilePic" | "_id">;
 }
 
 export interface LoginRequest extends Request {

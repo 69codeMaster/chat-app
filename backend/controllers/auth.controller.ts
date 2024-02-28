@@ -1,4 +1,8 @@
-import { SignupRequest, LoginRequest, LogoutRequest } from "../requestsType";
+import {
+  SignupRequest,
+  LoginRequest,
+  LogoutRequest,
+} from "@shared/requestsType.ts";
 import { Response } from "express";
 import User from "../models/user.model.js";
 import { compare, hash } from "../utils/passwordActions.ts";

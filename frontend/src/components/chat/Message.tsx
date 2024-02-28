@@ -2,15 +2,16 @@ import { MdOutlineDone } from "react-icons/md";
 import { IMessage } from "@shared/modelTypes";
 import { useCurrentUser } from "@src/context/currentUser";
 import useSelectedChat from "@src/zustand/useSelectedChat";
+import { extractTime } from "@src/utils/formatTime";
 // import { MdOutlineDoneAll } from "react-icons/md";
 
 type props = Omit<IMessage, "_id">;
 
-const Message = ({ message, receiverId, senderId }: props) => {
+const Message = ({ message, senderId, createdAt }: props) => {
   const { currentUser } = useCurrentUser();
   const { selectedChat } = useSelectedChat();
 
-  const messageSide = senderId! == currentUser?._id ? "chat-start" : "chat-end";
+  const messageSide = senderId !== currentUser?._id ? "chat-start" : "chat-end";
   const profilePic =
     senderId! == currentUser?._id
       ? currentUser.profilePic
@@ -29,7 +30,7 @@ const Message = ({ message, receiverId, senderId }: props) => {
       </div>
       <div className="chat-footer opacity-50">
         <MdOutlineDone className="inline mr-1" />
-        <time className="chat-footer text-xs">12:45</time>
+        <time className="chat-footer text-xs">{extractTime(createdAt)}</time>
       </div>
     </div>
   );

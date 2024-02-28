@@ -1,5 +1,5 @@
 import express from "express";
-import protectRoute from "../middleware/protectRoute";
+import protectRoute from "../middleware/protectRoute.ts";
 
 import { getUsersForSideBar } from "../controllers/user.controller.ts";
 

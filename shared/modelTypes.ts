@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-
 export type IChat = {
   _id: string;
   participents: string[];
@@ -11,6 +9,7 @@ export type IMessage = {
   senderId: string;
   receiverId: string;
   message: string[];
+  createdAt: string;
 };
 
 export type IUser = {

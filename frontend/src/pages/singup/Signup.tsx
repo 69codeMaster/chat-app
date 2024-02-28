@@ -1,7 +1,6 @@
 import { useState } from "react";
-
+import { inputFields } from "./singupTypes";
 import useSignup from "@hooks/useSignup";
-import { IUser as inputFields } from "@shared/modelTypes";
 
 import Card from "@src/components/UI/Card";
 
@@ -13,13 +12,11 @@ import FormCheckBox from "@src/components/UI/Form/FormCheckBox";
 
 const Signup = () => {
   const emptyForm: inputFields = {
-    _id: "",
     fullName: "",
     gender: "",
     password: "",
     username: "",
     passwordConfirmation: "",
-    profilePic: "",
   };
   const [formData, setFormData] = useState<inputFields>(emptyForm);
 

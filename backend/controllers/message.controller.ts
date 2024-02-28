@@ -1,5 +1,9 @@
 import { Response, Request } from "express";
-import { GetMessagesRequest, SendMessageRequest } from "requestsType";
+import {
+  GetMessagesRequest,
+  SendMessageRequest,
+} from "@shared/requestsType.ts";
+
 import Message from "../models/message.model.ts";
 import Conversation from "../models/converation.model.ts";
 

@@ -6,6 +6,7 @@ const useSelectedChat = create<storeType>()((set) => ({
     _id: "",
     fullName: "",
     username: "",
+    profilePic: "",
   },
 
   setSelectedChat: (chat) => set(() => ({ selectedChat: chat })),
