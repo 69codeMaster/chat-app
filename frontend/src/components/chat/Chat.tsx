@@ -5,7 +5,7 @@ import ChatBody from "./ChatBody";
 
 const Chat = () => {
   return (
-    <div className="form-control h-full w-full ">
+    <div className="form-control h-full w-full">
       <ChatHeader />
       <ChatBody />
       <MessageInput />

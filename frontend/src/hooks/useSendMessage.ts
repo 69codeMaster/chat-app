@@ -4,7 +4,7 @@ import useSelectedChat from "@src/zustand/useSelectedChat";
 
 const useSendMessage = () => {
   const [loading, setLoading] = useState(false);
-  const { selectedChat } = useSelectedChat();
+  const { selectedChat, messages, setMessages } = useSelectedChat();
   const sendMessage = async (message: string) => {
     setLoading(true);
     try {
@@ -18,7 +18,8 @@ const useSendMessage = () => {
         body: JSON.stringify({ message }),
       });
       const data = await res.json();
-      if (!res.ok) toast.error(data.message);
+      if (res.ok) setMessages([...messages, data]);
+      else toast.error(data.message);
     } catch (error: any) {
       toast.error(error.message);
     } finally {

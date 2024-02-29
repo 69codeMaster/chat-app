@@ -8,8 +8,9 @@ const useSelectedChat = create<storeType>()((set) => ({
     username: "",
     profilePic: "",
   },
-
-  setSelectedChat: (chat) => set(() => ({ selectedChat: chat })),
+  setSelectedChat: (selectedChat) => set(() => ({ selectedChat })),
+  messages: [],
+  setMessages: (messages) => set(() => ({ messages })),
 }));
 
 export default useSelectedChat;

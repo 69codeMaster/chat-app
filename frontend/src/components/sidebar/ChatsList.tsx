@@ -1,5 +1,5 @@
 import ChatItem from "./ChatItem";
-import useGetChats from "../../hooks/useGetChats.ts";
+import useGetChats from "@hooks/useGetChats.ts";
 
 const ChatsList = () => {
   const { sideBarUsers } = useGetChats();
