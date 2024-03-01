@@ -1,9 +1,11 @@
 type props = {
   profilcePic: string;
+  isOnline: boolean;
 };
-const Avatar = ({ profilcePic }: props) => {
+
+const Avatar = ({ profilcePic, isOnline }: props) => {
   return (
-    <div className="avatar online">
+    <div className={`avatar ${isOnline ? "online" : "offline"}`}>
       <div className="w-10 rounded-full">
         <img src={profilcePic} alt="user avatar" />
       </div>

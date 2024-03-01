@@ -1,15 +1,8 @@
-import { createContext, useContext, useState } from "react";
-import { contextType, props, userContext } from "./currentUserType";
+import { createContext, useContext, useEffect, useState } from "react";
+import { contextType, props } from "./currentUserType";
 
-const defualt: userContext = {
-  _id: "",
-  fullName: "",
-  gender: "",
-  profilePic: "",
-  username: "",
-};
 const CurrentUserCtx = createContext<contextType>({
-  currentUser: defualt,
+  currentUser: null,
   setCurrentUser: () => {},
 });
 
@@ -19,13 +12,15 @@ export function useCurrentUser() {
 
 export default function CurrentUserProvider({ children }: props) {
   const localStorageUser = localStorage.getItem("current-user");
-
+  console.log(localStorageUser);
   const user: contextType["currentUser"] = localStorageUser
     ? JSON.parse(localStorageUser)
     : null;
 
   const [currentUser, setCurrentUser] =
     useState<contextType["currentUser"]>(user);
+
+  console.log(currentUser);
 
   const value: contextType = {
     currentUser,

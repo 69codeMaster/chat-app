@@ -86,6 +86,7 @@ export const login = async (req: LoginRequest, res: Response) => {
 };
 
 export const logout = (req: LogoutRequest, res: Response) => {
+  
   try {
     res.cookie("jwt", "", {
       maxAge: 0,

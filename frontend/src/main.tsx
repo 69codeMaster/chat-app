@@ -3,13 +3,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+
 import CurrentUserProvider from "./context/currentUser.tsx";
+import SocketProvider from "./context/SocketContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
       <CurrentUserProvider>
-        <App />
+        <SocketProvider>
+          <App />
+        </SocketProvider>
       </CurrentUserProvider>
     </BrowserRouter>
   </React.StrictMode>

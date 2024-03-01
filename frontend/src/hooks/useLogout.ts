@@ -15,6 +15,7 @@ const useLogout = () => {
         },
       });
       const data = await res.json();
+
       if (!res.ok) toast.error(data.message);
       else {
         localStorage.removeItem("current-user");

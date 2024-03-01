@@ -9,6 +9,7 @@ export default defineConfig({
       { find: "@hooks", replacement: path.resolve(__dirname, "src/hooks") },
       { find: "@pages", replacement: path.resolve(__dirname, "src/pages") },
       { find: "@context", replacement: path.resolve(__dirname, "src/context") },
+      { find: "@shared", replacement: path.resolve(__dirname, "../shared") },
       {
         find: "@components",
         replacement: path.resolve(__dirname, "src/components"),

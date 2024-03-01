@@ -10,7 +10,6 @@ import "./App.css";
 
 function App() {
   const { currentUser } = useCurrentUser();
-  console.log(currentUser);
 
   return (
     <>
